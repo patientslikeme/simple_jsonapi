@@ -1,0 +1,131 @@
+AllCops:
+  Exclude:
+    - '*.gemspec'
+    - 'Gemfile*'
+  TargetRubyVersion: "2.3"
+
+# Do not modify any of these rules without running your changes past the `@techleads` Slack group.
+
+# In order to make CodeClimate run in less than 30 minutes (the time-out), we're temporarily turning off
+# some of the low-risk, high-frequency cops.  This should be a temporary solution.  We should either
+# fix all of these issues across the codebase, or tune the cops to only pull up these issues when they
+# matter (e.g. setting the max line length to 120 instead of 80)
+
+Style/StringLiterals:
+  Enabled: false # this cop slows rubocop down too much so CodeClimate times out
+  EnforcedStyle: double_quotes
+
+Style/NumericLiterals:
+  Enabled: false # this cop slows rubocop down too much so CodeClimate times out
+
+# Permanent rules below
+
+Layout/AlignParameters:
+  Enabled: false # we haven't reached consensus yet on what this rule should be
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+  IndentOneStep: false
+
+# Layout/ElseAlignment:
+#   Enabled: false # we haven't reached consensus yet on what this rule should be
+
+# Layout/MultilineMethodCallIndentation:
+#   Enabled: false # we haven't reached consensus yet on what this rule should be
+
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false # we disagree with this rule
+
+# Lint/EndAlignment:
+#   EnforcedStyleAlignWith: start_of_line
+
+Metrics/AbcSize:
+  # There are ~500 methods > 20 as of 3/7/18, vs. ~900 methods > 15 (which is the default)
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 25
+  ExcludedMethods: ["class_methods", "describe", "included"]
+
+Metrics/ClassLength:
+  # nearly all classes over 200 lines are old and crufty and should be split up
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  # There are ~100 methods > 8 as of 3/7/18, vs. 220 > 6 (which is the default)
+  Max: 8
+
+Metrics/LineLength:
+  # There are 23k lines > 80 chars, 5k > 120, 2k > 140 chars as of 12/21/17
+  Max: 120
+
+Metrics/MethodLength:
+  # There are ~100 methods > 35 lines as of 12/21/17
+  Max: 35
+
+Metrics/ModuleLength:
+  # nearly all modules over 200 lines are old and crufty and should be split up
+  Max: 200
+
+Metrics/PerceivedComplexity:
+  # There are ~100 methods > 8 as of 3/7/18, vs. ~150 methods > 7 (which is the default)
+  Max: 8
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case # `condition_info_1` is easier to read than `condition_info1`
+
+Performance/Casecmp:
+  Enabled: false # we generally prefer the readability of downcase over the performance of casecmp
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/BracesAroundHashParameters:
+  Enabled: false # using braces can be a good choice, e.g., `assert_equal expected_json, { "foo" => "bar" }`
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude: ["share/**/*"]
+
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    collect: map
+    collect!: map!
+    inject: reduce
+    detect: find
+    find_all: select
+
+Style/Documentation:
+  Enabled: false # don't require class and method doc comments
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Style/GuardClause:
+  Enabled: false # sometimes guard clauses are appropriate and sometimes they aren't
+
+Style/IfUnlessModifier:
+  Enabled: false # sometimes its clearer to use traditional if/end conditionals, even if they would fit on one line
+
+Style/NumericPredicate:
+  Enabled: false # we disagree with this rule
+
+Style/SymbolArray:
+  Enabled: false # undecided
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/WordArray:
+  Enabled: false # sometimes %w makes sense and sometimes it doesn't
