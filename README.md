@@ -1,12 +1,12 @@
 # SimpleJsonapi
 
-A library for building [JSONAPI](http://jsonapi.org) documents in Ruby. You may also be interested in [simple\_jsonapi\_rails](../simple_jsonapi_rails/README.md), which provides some integrations for using simple_jsonapi in a Rails application.
+A library for building [JSON API](http://jsonapi.org) documents in Ruby. You may also be interested in [simple\_jsonapi\_rails](https://github.com/patientslikeme/simple_jsonapi_rails), which provides some integrations for using simple_jsonapi in a Rails application.
 
-To view this README and more documentation of specific classes and methods, view the YARD documentation by running `yard server --reload` and visiting http://localhost:8808.
+To view this README and more documentation of specific classes and methods, view the [YARD documentation](https://www.rubydoc.info/gems/simple_jsonapi).
 
 ### Features
 
-SimpleJsonapi supports the following JSONAPI features:
+SimpleJsonapi supports the following JSON API features:
 
 * Singular and collection endpoints
 * Attributes and relationships, including nested relationships
@@ -26,7 +26,7 @@ A specification for building APIs in JSON. As its creators [write](http://jsonap
 
 > If you’ve ever argued with your team about the way your JSON responses should be formatted, JSON API can be your anti-bikeshedding tool.
 
-Here's a sample JSONAPI response that also sets the stage for the examples we'll see below:
+Here's a sample JSON API response that also sets the stage for the examples we'll see below:
 
 ```json
 {
