@@ -1,3 +1,3 @@
 @Library('plm-global-jenkins')_
 
-publishRubyPackagePipeline('./lib/simplejson_api/version.rb', 'SimpleJsonapi::VERSION')
+publishRubyPackagePipeline('./lib/simple_jsonapi/version.rb', 'SimpleJsonapi::VERSION')
