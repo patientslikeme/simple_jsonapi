@@ -253,8 +253,8 @@ Attributes (and relationships) can be conditionally rendered by providing an `if
 
 ```ruby
 class UserSerializer < SimpleJsonapi::Serializer
-  attribute :ssn, if: { @current_user.is_an_admin? }
-  attribute :country, unless: { |user| user.hide_demographics? }
+  attribute :ssn, if: -> { @current_user.is_an_admin? }
+  attribute :country, unless: ->(user) { user.hide_demographics? }
 end
 ```
 
@@ -383,7 +383,7 @@ It is also possible to pass in additional variables at render time via the `extr
 
 ```ruby
 class UserSerializer < SimpleJsonapi::Serializer
-  attribute :ssn, if: { @current_user.is_an_admin? }
+  attribute :ssn, if: -> { @current_user.is_an_admin? }
   relationship :orders do
     data { |user| get_orders_for_user(user) }
   end
